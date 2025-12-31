@@ -1,18 +1,4 @@
----
-title: MySQL备忘清单📝
-date: 2025-12-04 18:48:56
-updated: 2025-12-04 18:48:56
-tag: [备忘清单,MySQL]
-categories: [备忘清单,MySQL]
-cover:
-description: MySQL备忘清单📝
-sticky: 7
-swiper_index: 7
----
-
----
-
-> 本备忘单转载自Quick Reference--[MySQL 备忘清单](https://quickref.me/zh-CN/docs/mysql.html)
+> 本备忘单转载自 Quick Reference--[MySQL 备忘清单](https://quickref.me/zh-CN/docs/mysql.html)
 
 # 入门
 
@@ -20,7 +6,7 @@ swiper_index: 7
 
 MySQL 为关系型数据库(Relational Database Management System)，一个关系型数据库由一个或数个表格组成，如下所示的一个表格
 
-------
+---
 
 ```bash
     name ▼ 键            ▼ 列(col)
@@ -34,15 +20,15 @@ MySQL 为关系型数据库(Relational Database Management System)，一个关�
     redis ▲ 值
 ```
 
-------
+---
 
-- `表头(header)` 每一列的名称
-- `列(col)` 具有相同数据类型的数据的集合
-- `行(row)` 每一行用来描述某个人/物的具体信息
-- `值(value)` 行的具体信息，每个值与该列数据类型相同
-- `键(key)` 用来识别某个特定的人/物的方法，有唯一性
+-   `表头(header)` 每一列的名称
+-   `列(col)` 具有相同数据类型的数据的集合
+-   `行(row)` 每一行用来描述某个人/物的具体信息
+-   `值(value)` 行的具体信息，每个值与该列数据类型相同
+-   `键(key)` 用来识别某个特定的人/物的方法，有唯一性
 
-## 登录MySQL
+## 登录 MySQL
 
 ```shell
 # 默认用户名<root>，-p 是密码，
@@ -53,7 +39,7 @@ mysql -h <host> -P <端口号> -u <user> -p [db_name]
 mysql -h <host> -u <user> -p [db_name]
 ```
 
-## 常用DDL语句
+## 常用 DDL 语句
 
 ### 数据库 Database
 
@@ -70,7 +56,7 @@ mysql -h <host> -u <user> -p [db_name]
 | ----------------------- | ------------------ |
 | `SHOW FIELDS FROM` t`;` | 表的列表字段       |
 | `DESC` t`;`             | 显示表格结构       |
-| `SHOW CREATE TABLE`t`;` | 显示创建表sql      |
+| `SHOW CREATE TABLE`t`;` | 显示创建表 sql     |
 | `TRUNCATE TABLE`t`;`    | 删除表中的所有数据 |
 | `DROP TABLE`t`;`        | 删除表格           |
 
@@ -86,15 +72,15 @@ mysql -h <host> -u <user> -p [db_name]
 # 显示当前mysql的version的各种信息
 mysql> status;
 # 显示当前mysql的version信息
-mysql> select version(); 
+mysql> select version();
 # 查看 MySQL 端口号
 mysql> show global variables like 'port';
 ```
 
-## 退出MySQL会话
+## 退出 MySQL 会话
 
 ```bash
-mysql> exit 
+mysql> exit
 ```
 
 退出 `quit;` 或 `\q;` 一样的效果
@@ -148,7 +134,7 @@ DROP TABLE t ;
 ALTER TABLE t ADD COLUMN c datatype;
 ```
 
-从表中删除列c
+从表中删除列 c
 
 ```sql
 ALTER TABLE t DROP COLUMN c;
@@ -166,19 +152,19 @@ ALTER TABLE t ADD constraint;
 ALTER TABLE t DROP constraint;
 ```
 
-将表从t1重命名为t2
+将表从 t1 重命名为 t2
 
 ```sql
 ALTER TABLE t1 RENAME TO t2;
 ```
 
-将列c1重命名为c2
+将列 c1 重命名为 c2
 
 ```sql
 ALTER TABLE t1 RENAME c1 TO c2 ;
 ```
 
-将列c1的数据类型改为datatype
+将列 c1 的数据类型改为 datatype
 
 ```sql
 ALTER TABLE t1 MODIFY c1 datatype;
@@ -192,7 +178,7 @@ TRUNCATE TABLE t;
 
 ## 从表中查询数据
 
-从表中查询列c1、c2中的数据
+从表中查询列 c1、c2 中的数据
 
 ```sql
 SELECT c1, c2 FROM t
@@ -225,11 +211,11 @@ SELECT c1, c2 FROM t
 ORDER BY c1 ASC [DESC]
 ```
 
-跳过行的偏移并返回下n行
+跳过行的偏移并返回下 n 行
 
 ```sql
 SELECT c1, c2 FROM t
-ORDER BY c1 
+ORDER BY c1
 LIMIT n OFFSET offset
 ```
 
@@ -241,7 +227,7 @@ FROM t
 GROUP BY c1
 ```
 
-使用HAVING子句筛选组
+使用 HAVING 子句筛选组
 
 ```sql
 SELECT c1, aggregate(c2)
@@ -255,23 +241,23 @@ HAVING condition
 内部连接 t1 和 t2
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1
 INNER JOIN t2 ON condition
 ```
 
-左连接t1和t1
+左连接 t1 和 t1
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1
 LEFT JOIN t2 ON condition
 ```
 
-右连接t1和t2
+右连接 t1 和 t2
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1
 RIGHT JOIN t2 ON condition
 ```
@@ -279,7 +265,7 @@ RIGHT JOIN t2 ON condition
 执行完全外部连接
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1
 FULL OUTER JOIN t2 ON condition
 ```
@@ -287,7 +273,7 @@ FULL OUTER JOIN t2 ON condition
 生成表中行的笛卡尔积
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1
 CROSS JOIN t2
 ```
@@ -295,11 +281,11 @@ CROSS JOIN t2
 执行交叉连接的另一种方法
 
 ```sql
-SELECT c1, c2 
+SELECT c1, c2
 FROM t1, t2
 ```
 
-使用INNER Join子句将t1连接到自身
+使用 INNER Join 子句将 t1 连接到自身
 
 ```sql
 SELECT c1, c2
@@ -307,7 +293,7 @@ FROM t1 A
 INNER JOIN t1 B ON condition
 ```
 
-使用SQL运算符，合并两个查询中的行
+使用 SQL 运算符，合并两个查询中的行
 
 ```sql
 SELECT c1, c2 FROM t1
@@ -331,7 +317,7 @@ MINUS
 SELECT c1, c2 FROM t2
 ```
 
-使用模式匹配%查询行_
+使用模式匹配%查询行\_
 
 ```sql
 SELECT c1, c2 FROM t1
@@ -352,7 +338,7 @@ SELECT c1, c2 FROM t
 WHERE  c1 BETWEEN low AND high
 ```
 
-检查表中的值是否为NULL
+检查表中的值是否为 NULL
 
 ```sql
 SELECT c1, c2 FROM t
@@ -363,7 +349,7 @@ WHERE  c1 IS [NOT] NULL
 
 > 数据库约束是对表中的数据进行进一步的限制，保证数据的正确性、有效性和完整性。
 
-==主键约束==（PRIMARY KEY），将c1和c2设置为主键如下：
+==主键约束==（PRIMARY KEY），将 c1 和 c2 设置为主键如下：
 
 ```sql
 CREATE TABLE t(
@@ -372,17 +358,17 @@ CREATE TABLE t(
 );
 ```
 
-==外键约束==(FOREIGN KEY)，将c2列设置为外键如下：
+==外键约束==(FOREIGN KEY)，将 c2 列设置为外键如下：
 
 ```sql
 CREATE TABLE t1(
-    c1 INT PRIMARY KEY,  
+    c1 INT PRIMARY KEY,
     c2 INT,
     FOREIGN KEY (c2) REFERENCES t2(c2)
 );
 ```
 
-==唯一性约束==（UNIQUE），使c1和c2中的值唯一如下：
+==唯一性约束==（UNIQUE），使 c1 和 c2 中的值唯一如下：
 
 ```sql
 CREATE TABLE t(
@@ -391,7 +377,7 @@ CREATE TABLE t(
 );
 ```
 
-==检查约束==（CHECK），确保c1>0和c1>=c2中的值如下（MySQL暂不支持检查约束）：
+==检查约束==（CHECK），确保 c1>0 和 c1>=c2 中的值如下（MySQL 暂不支持检查约束）：
 
 ```sql
 CREATE TABLE t(
@@ -400,7 +386,7 @@ CREATE TABLE t(
 );
 ```
 
-==非空约束==（NOT NULL），c2列中的设置值不为NULL如下：
+==非空约束==（NOT NULL），c2 列中的设置值不为 NULL 如下：
 
 ```sql
 CREATE TABLE t(
@@ -422,11 +408,11 @@ VALUES(value_list);
 
 ```sql
 INSERT INTO t(column_list)
-VALUES (value_list), 
+VALUES (value_list),
        (value_list), …;
 ```
 
-将行从t2插入t1
+将行从 t2 插入 t1
 
 ```sql
 INSERT INTO t1(column_list)
@@ -434,18 +420,18 @@ SELECT column_list
 FROM t2;
 ```
 
-更新列c1中所有行的新值
+更新列 c1 中所有行的新值
 
 ```sql
 UPDATE t
 SET c1 = new_value;
 ```
 
-更新列c1、c2中与条件匹配的值
+更新列 c1、c2 中与条件匹配的值
 
 ```sql
 UPDATE t
-SET c1 = new_value, 
+SET c1 = new_value,
         c2 = new_value
 WHERE condition;
 ```
@@ -465,10 +451,10 @@ WHERE condition;
 
 ## 管理视图
 
-创建由c1和c2组成的新视图
+创建由 c1 和 c2 组成的新视图
 
 ```sql
-CREATE VIEW v(c1,c2) 
+CREATE VIEW v(c1,c2)
 AS
 SELECT c1, c2
 FROM t;
@@ -477,7 +463,7 @@ FROM t;
 使用选中选项创建新视图
 
 ```sql
-CREATE VIEW v(c1,c2) 
+CREATE VIEW v(c1,c2)
 AS
 SELECT c1, c2
 FROM t;
@@ -487,7 +473,7 @@ WITH [CASCADED | LOCAL] CHECK OPTION;
 创建递归视图
 
 ```sql
-CREATE RECURSIVE VIEW v 
+CREATE RECURSIVE VIEW v
 AS
 select-statement -- anchor part
 UNION [ALL]
@@ -497,7 +483,7 @@ select-statement; -- recursive part
 创建临时视图
 
 ```sql
-CREATE TEMPORARY VIEW v 
+CREATE TEMPORARY VIEW v
 AS
 SELECT c1, c2
 FROM t;
@@ -528,27 +514,27 @@ EXECUTE stored_procedure;
 
 ### EVENT
 
-| `INSERT` | 为INSERT调用 |
-| -------- | ------------ |
-| `UPDATE` | 调用UPDATE   |
-| `DELETE` | 调用DELETE   |
+| `INSERT` | 为 INSERT 调用 |
+| -------- | -------------- |
+| `UPDATE` | 调用 UPDATE    |
+| `DELETE` | 调用 DELETE    |
 
 ### TRIGGER_TYPE
 
-| `FOR EACH ROW`       | -    |
-| -------------------- | ---- |
-| `FOR EACH STATEMENT` | -    |
+| `FOR EACH ROW`       | -   |
+| -------------------- | --- |
+| `FOR EACH STATEMENT` | -   |
 
 ## 管理索引
 
-在t表的c1和c2上创建索引
+在 t 表的 c1 和 c2 上创建索引
 
 ```sql
-CREATE INDEX idx_name 
+CREATE INDEX idx_name
 ON t(c1,c2);
 ```
 
-在t表的c3、c4上创建唯一索引
+在 t 表的 c3、c4 上创建唯一索引
 
 ```sql
 CREATE UNIQUE INDEX idx_name
@@ -589,12 +575,12 @@ DROP INDEX idx_name;
 
 ## Numeric
 
-| `TINYINT x`   | Integer (-128 to 127)                                        |
-| ------------- | ------------------------------------------------------------ |
-| `SMALLINT x`  | Integer (-32768 to 32767)                                    |
-| `MEDIUMINT x` | Integer (-8388608 to 8388607)                                |
-| `INT x`       | Integer (-2147­483648 to 214748­3647)                        |
+| `TINYINT x`   | Integer (-128 to 127)                                         |
+| ------------- | ------------------------------------------------------------- |
+| `SMALLINT x`  | Integer (-32768 to 32767)                                     |
+| `MEDIUMINT x` | Integer (-8388608 to 8388607)                                 |
+| `INT x`       | Integer (-2147­483648 to 214748­3647)                         |
 | `BIGINT x`    | Integer (-9223­372­036­854­775808 to 922337­203­685­477­5807) |
-| `FLOAT`       | Decimal (precise to 23 digits)                               |
-| `DOUBLE`      | Decimal (24 to 53 digits)                                    |
-| `DECIMAL`     | "­DOU­BLE­" stored as string                                 |
+| `FLOAT`       | Decimal (precise to 23 digits)                                |
+| `DOUBLE`      | Decimal (24 to 53 digits)                                     |
+| `DECIMAL`     | "­DOU­BLE­" stored as string                                  |

@@ -1,68 +1,601 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<title>JamHoo的知识库</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="description" content="JamHoo的个人知识库" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<!-- 设置浏览器图标 -->
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<!-- 默认主题 -->
+		<link
+			rel="stylesheet"
+			href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <title>Docsify-Guide</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Description">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!-- 设置浏览器图标 -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <!-- 默认主题 -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
-</head>
+		<!-- 1. 引入CodeMirror风格的Prism高亮主题（核心） -->
+		<link
+			rel="stylesheet"
+			href="//cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-codemirror.css" />
+		<!-- 行号插件样式 -->
+		<link
+			rel="stylesheet"
+			href="//cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css" />
 
-<body>
-    <!-- 定义加载时候的动作 -->
-    <div id="app">加载中...</div>
-    <script>
-        window.$docsify = {
-            // 项目名称
-            name: 'Docsify-Guide',
-            // 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
-            repo: 'https://github.com/YSGStudyHards',
-            // 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
-            loadSidebar: true,
-            // 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
-            loadNavbar: true,
-            // 封面支持，默认加载的是项目根目录下的_coverpage.md文件
-            coverpage: true,
-            // 最大支持渲染的标题层级
-            maxLevel: 5,
-            // 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
-            subMaxLevel: 4,
-            // 小屏设备下合并导航栏到侧边栏
-            mergeNavbar: true,
-            /*搜索相关设置*/
-            search: {
-                maxAge: 86400000,// 过期时间，单位毫秒，默认一天
-                paths: 'auto',// 注意：仅适用于 paths: 'auto' 模式
-                placeholder: '搜索',
-                // 支持本地化
-                placeholder: {
-                    '/zh-cn/': '搜索',
-                    '/': 'Type to search'
-                },
-                noData: '找不到结果',
-                depth: 4,
-                hideOtherSidebarContent: false,
-                namespace: 'Docsify-Guide',
-            }
-        }
-    </script>
-    <!-- docsify的js依赖 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-    <!-- emoji表情支持 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-    <!-- 图片放大缩小支持 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-    <!-- 搜索功能支持 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <!--在所有的代码块上添加一个简单的Click to copy按钮来允许用户从你的文档中轻易地复制代码-->
-    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-</body>
+		<!-- 引入Google Fonts 思源黑体 (Noto Sans SC) -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+			rel="stylesheet" />
 
+		<!-- 引入阿里巴巴普惠体 CDN -->
+		<link
+			rel="stylesheet"
+			href="https://at.alicdn.com/t/c/font_4325772_9801g34om8.css" />
+
+		<!-- 字体定义与全局样式美化 -->
+		<style>
+			/* 定义阿里巴巴普惠体 */
+			@font-face {
+				font-family: 'Alibaba PuHuiTi';
+				src: url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Regular.woff2')
+						format('woff2'),
+					url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Regular.woff')
+						format('woff');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: 'Alibaba PuHuiTi';
+				src: url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Medium.woff2')
+						format('woff2'),
+					url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Medium.woff')
+						format('woff');
+				font-weight: 500;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: 'Alibaba PuHuiTi';
+				src: url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Bold.woff2')
+						format('woff2'),
+					url('https://puhuiti.aliyun.com/webfont/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-Bold.woff')
+						format('woff');
+				font-weight: 700;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			/* 全局样式重置与美化 */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			/* 字体应用策略 */
+			body {
+				font-family: 'Alibaba PuHuiTi', 'PingFang SC', 'Microsoft YaHei',
+					sans-serif !important;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				color: #333;
+				line-height: 1.7;
+				letter-spacing: 0.02em;
+			}
+
+			/* 标题使用 Google 思源黑体 */
+			.markdown-section h1,
+			.markdown-section h2,
+			.markdown-section h3,
+			.markdown-section h4,
+			.markdown-section h5 {
+				font-family: 'Noto Sans SC', 'PingFang SC Bold',
+					'Microsoft YaHei Bold', sans-serif !important;
+				font-weight: 700;
+				color: #2c3e50;
+				margin-bottom: 16px;
+				line-height: 1.4;
+			}
+
+			/* 加载动画美化 */
+			#app {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 18px;
+				color: #42b983;
+				background-color: #f8f9fa;
+				font-weight: 500;
+			}
+			/* 清除侧边栏列表符号 */
+			.sidebar ul li::before,
+			.sidebar ul li a::before {
+				content: none !important;
+			}
+			/* 标题样式优化 */
+			.markdown-section h1 {
+				font-size: 2.2rem;
+				border-bottom: 2px solid #42b983;
+				padding-bottom: 10px;
+				margin-top: 20px;
+				font-weight: 900;
+			}
+
+			.markdown-section h2 {
+				font-size: 1.8rem;
+				border-left: 4px solid #42b983;
+				padding-left: 12px;
+				margin-top: 30px;
+				font-weight: 800;
+			}
+
+			.markdown-section h3 {
+				font-size: 1.4rem;
+				color: #34495e;
+				font-weight: 700;
+			}
+
+			/* 正文样式优化 */
+			.markdown-section p {
+				font-size: 16px;
+				margin-bottom: 16px;
+				color: #444;
+				font-weight: 400;
+			}
+
+			/* 链接样式美化 */
+			.markdown-section a {
+				color: #42b983;
+				text-decoration: none;
+				border-bottom: 1px solid transparent;
+				transition: all 0.3s ease;
+			}
+
+			.markdown-section a:hover {
+				color: #359469;
+				border-bottom: 1px solid #42b983;
+			}
+
+			/* 代码块美化 - 适配CodeMirror主题（核心修复） */
+			.markdown-section pre[class*='language-'] {
+				background-color: #f9f9f9 !important; /* 匹配CodeMirror背景 */
+				border-radius: 8px !important;
+				padding: 16px !important;
+				margin-bottom: 20px !important;
+				border: 1px solid #e0e0e0 !important;
+				overflow: auto;
+			}
+
+			/* 代码字体优化（等宽字体） */
+			.markdown-section code[class*='language-'],
+			pre[class*='language-'] code {
+				font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+				font-size: 14px !important;
+				line-height: 1.5 !important;
+			}
+
+			/* CodeMirror风格高亮规则（强制覆盖） */
+			.token.comment,
+			.token.prolog,
+			.token.doctype,
+			.token.cdata {
+				color: #008000 !important; /* 注释绿色 */
+			}
+			.token.punctuation {
+				color: #999 !important; /* 标点灰色 */
+			}
+			.token.property,
+			.token.tag,
+			.token.boolean,
+			.token.number,
+			.token.constant,
+			.token.symbol,
+			.token.deleted {
+				color: #099 !important; /* 属性/数字 青绿色 */
+			}
+			.token.selector,
+			.token.attr-name,
+			.token.string,
+			.token.char,
+			.token.builtin,
+			.token.inserted {
+				color: #d14 !important; /* 字符串 红色 */
+			}
+			.token.operator,
+			.token.entity,
+			.token.url,
+			.language-css .token.string,
+			.style .token.string {
+				color: #9a6e3a !important; /* 运算符 棕黄色 */
+			}
+			.token.atrule,
+			.token.attr-value,
+			.token.keyword {
+				color: #07a !important; /* 关键字 蓝色 */
+			}
+			.token.function,
+			.token.class-name {
+				color: #dd4a68 !important; /* 函数/类名 玫红色 */
+			}
+			.token.regex,
+			.token.important,
+			.token.variable {
+				color: #e90 !important; /* 变量/正则 橙色 */
+			}
+
+			/* 行号样式 */
+			pre.line-numbers {
+				padding-left: 4.5em !important;
+			}
+			.line-numbers .line-numbers-rows {
+				border-right: 1px solid #eee;
+			}
+			.line-numbers-rows > span:before {
+				color: #999;
+			}
+
+			/* 列表样式优化 */
+			.markdown-section ul,
+			.markdown-section ol {
+				margin-bottom: 16px;
+				padding-left: 24px;
+			}
+
+			.markdown-section li {
+				margin-bottom: 8px;
+				font-size: 15px;
+			}
+
+			/* 侧边栏美化 - 最终优化版 */
+			.sidebar {
+				background-color: #fafafa !important;
+				border-right: 1px solid #eee !important;
+			}
+			/* 控制层级列表的间距与缩进 */
+			.sidebar ul,
+			.sidebar ul ul,
+			.sidebar ul ul ul {
+				margin: 0 !important;
+				padding-left: 14px !important;
+			}
+			.sidebar ul li {
+				padding: 2px 0 !important;
+				line-height: 1.45 !important;
+				margin: 1px 0 !important;
+			}
+			/* 选中项样式：移除背景色，仅保留文字与轻微区分 */
+			.sidebar li.active {
+				background: none !important;
+				padding: 3px 8px !important;
+				margin: 2px 0 !important;
+			}
+			/* 选中项文字：仅加深颜色，不调整字重 */
+			.sidebar li.active a {
+				color: #2a7d58 !important;
+				font-weight: 400 !important;
+			}
+			/* 侧边栏文字样式：区分分类标题和内容 */
+			/* 分类标题（如“教程类”“备忘清单类”） */
+			.sidebar h2,
+			.sidebar h3 {
+				color: #2c3e50 !important; /* 深色突出分类标题 */
+				font-weight: 700 !important;
+				margin: 6px 0 4px 0 !important;
+				font-size: 15px !important;
+				/* 轻微下划线区分 */
+				padding-bottom: 1px;
+				border-bottom: 1px solid #f0f0f0;
+			}
+			/* 知识库顶部标题：放大+装饰样式 + 下方分割线 */
+			.sidebar > h1 {
+				/* 标题下方添加分割线 */
+				margin: 0 0 8px 0 !important;
+				position: relative;
+			}
+			.sidebar > h1::after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 1px;
+				background-color: #d5d6d6; /* 浅灰色分割线，与整体风格协调 */
+				margin-top: 6px;
+			}
+			.sidebar > h1 a {
+				color: #42b983 !important; /* 主题色突出 */
+				font-size: 22px !important; /* 放大字体 */
+				font-weight: 800 !important;
+				display: inline-block;
+			}
+			/* 侧边栏内容文字 */
+			.sidebar a {
+				font-family: 'Alibaba PuHuiTi', 'PingFang SC', sans-serif !important;
+				color: #666 !important; /* 浅灰色弱化内容文字，突出标题 */
+				font-weight: 400 !important;
+				transition: all 0.2s ease;
+				font-size: 14px !important;
+				display: inline-block;
+				padding: 1px 0 !important;
+			}
+			/* hover效果强化 */
+			.sidebar a:hover {
+				color: #42b983 !important;
+				font-weight: 500 !important;
+			}
+			/* 侧边栏整体内边距 */
+			.sidebar .sidebar-nav {
+				padding: 12px 10px !important;
+			}
+
+			/* 搜索框样式 */
+			.search input {
+				border-radius: 20px !important;
+				padding: 11px !important;
+				border: 1px solid #ddd !important;
+				background-color: #f8f9fa !important;
+				font-size: 14px !important;
+				margin-bottom: 10px !important;
+			}
+
+			.search input:focus {
+				border-color: #42b983 !important;
+				box-shadow: 0 0 0 2px rgba(66, 185, 131, 0.2) !important;
+				outline: none !important;
+			}
+
+			/* 导航栏美化 */
+			.navbar {
+				background-color: #fff !important;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+			}
+
+			.navbar-brand {
+				font-family: 'Noto Sans SC', 'PingFang SC Bold', sans-serif !important;
+				font-weight: 700 !important;
+				font-size: 18px !important;
+				color: #42b983 !important;
+			}
+
+			/* 图片样式优化 */
+			.markdown-section img {
+				border-radius: 8px !important;
+				box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+				margin: 16px 0 !important;
+				max-width: 100% !important;
+			}
+
+			/* 表格样式美化 */
+			.markdown-section table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+			}
+
+			.markdown-section th {
+				background-color: #f8f9fa;
+				font-weight: 600;
+				text-align: left;
+				padding: 12px 16px;
+				border-bottom: 2px solid #eee;
+			}
+
+			.markdown-section td {
+				padding: 12px 16px;
+				border-bottom: 1px solid #eee;
+			}
+
+			/* 移动端适配优化 */
+			@media (max-width: 768px) {
+				.markdown-section h1 {
+					font-size: 1.8rem;
+				}
+
+				.markdown-section h2 {
+					font-size: 1.5rem;
+				}
+
+				.markdown-section p {
+					font-size: 15px;
+				}
+				/* 移动端顶部标题适配 */
+				.sidebar > h1 {
+					font-size: 18px !important;
+				}
+				.sidebar {
+					background-color: #fff !important;
+				}
+			}
+
+			/* 复制代码按钮美化 */
+			.docsify-copy-code-button {
+				border-radius: 4px !important;
+				background-color: #42b983 !important;
+				color: white !important;
+				font-size: 12px !important;
+				padding: 2px 8px !important;
+				opacity: 0.8;
+				transition: all 0.2s ease;
+			}
+
+			.docsify-copy-code-button:hover {
+				opacity: 1;
+				background-color: #359469 !important;
+			}
+
+			/* 滚动条美化 */
+			::-webkit-scrollbar {
+				width: 8px;
+				height: 8px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #f1f1f1;
+				border-radius: 4px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #ddd;
+				border-radius: 4px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #42b983;
+			}
+
+			/* 折叠插件样式优化：适配主题 - 核心修改 */
+			.sidebar .sidebar-nav .collapse-icon {
+				color: #42b983 !important;
+				margin-right: 4px !important;
+				display: inline-block; /* 必须加，否则旋转无效 */
+				transition: transform 0.2s ease-in-out; /* 平滑过渡 */
+				font-size: 12px; /* 图标大小适配 */
+				line-height: 1; /* 垂直居中 */
+			}
+			/* 展开时图标旋转为▼ */
+			.sidebar .sidebar-nav .collapse-icon.open {
+				transform: rotate(90deg); /* 旋转90度，▶变▼ */
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 定义加载时候的动作 -->
+		<div id="app">
+			<div
+				style="
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				">
+				<div
+					style="
+						width: 40px;
+						height: 40px;
+						border: 3px solid #42b983;
+						border-top: 3px solid transparent;
+						border-radius: 50%;
+						animation: spin 1s linear infinite;
+						margin-bottom: 12px;
+					"></div>
+				<span>加载中...</span>
+			</div>
+		</div>
+
+		<!-- 加载动画关键帧 -->
+		<style>
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+
+		<script>
+			window.$docsify = {
+				// 项目名称
+				name: 'JamHoo的知识库',
+				// 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
+				repo: 'https://github.com/colour008/jamhoo',
+				// 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
+				loadSidebar: true,
+				// 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
+				loadNavbar: true,
+				// 封面支持，默认加载的是项目根目录下的_coverpage.md文件
+				coverpage: true,
+				// 最大支持渲染的标题层级
+				maxLevel: 5,
+				// 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
+				subMaxLevel: 4,
+				// 小屏设备下合并导航栏到侧边栏
+				mergeNavbar: true,
+				/*搜索相关设置*/
+				search: {
+					maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+					paths: 'auto', // 注意：仅适用于 paths: 'auto' 模式
+					placeholder: '搜索',
+					// 支持本地化
+					placeholder: {
+						'/zh-cn/': '搜索',
+						'/': '输入关键词搜索',
+					},
+					noData: '找不到结果',
+					depth: 4,
+					hideOtherSidebarContent: false,
+					namespace: 'JamHoo的知识库',
+				},
+				// 平滑滚动
+				scrollToTop: {
+					auto: true,
+					delay: 500,
+				},
+				// 折叠插件配置：默认折叠所有层级，点击标题展开下一层
+				collapse: {
+					initialState: 'collapse', // 默认折叠
+					expandAll: false, // 不默认展开所有
+					collapseIcon: '▶', // 折叠时图标（向右箭头）
+					expandIcon: '▶', // 展开时图标（通过CSS旋转为向下箭头）
+				},
+				// 代码高亮配置（核心修复：关闭Docsify自带Prism，强制使用外部Prism）
+				prism: {
+					enabled: false, // 关闭Docsify内置的Prism，避免冲突
+				},
+			};
+		</script>
+		<!-- docsify的js依赖 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+		<!-- emoji表情支持 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+		<!-- 图片放大缩小支持 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+		<!-- 搜索功能支持 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+		<!--在所有的代码块上添加一个简单的Click to copy按钮来允许用户从你的文档中轻易地复制代码-->
+		<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+		<!-- 平滑滚动插件 -->
+		<script src="//cdn.jsdelivr.net/npm/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
+		<!-- 侧边栏折叠插件（实现点击展开层级） -->
+		<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+		<!-- 外部Prism语法高亮（核心修复：独立加载，避免与Docsify内置冲突） -->
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+		<!-- 强制加载SQL语言包（修复SQL高亮） -->
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+		<!-- 其他语言包（按需添加） -->
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
+
+		<!-- 页面加载完成后，手动初始化Prism（核心修复：确保代码块被高亮） -->
+		<script>
+			window.addEventListener('load', function () {
+				// 初始化所有代码块的语法高亮
+				Prism.highlightAll();
+				// 为代码块添加行号（可选）
+				document
+					.querySelectorAll('pre[class*="language-"]')
+					.forEach(function (block) {
+						block.classList.add('line-numbers');
+					});
+			});
+		</script>
+	</body>
 </html>

@@ -1,21 +1,10 @@
----
-title: OpenWrt 扩容 Overlay💽
-date: 2024-12-02 10:00:00
-updated: 2024-12-02 10:00:00
-tag: [教程,OpenWrt,Overlay]
-categories: [知识库,OpenWrt]
-cover:
-description: OpenWrt 扩容 Overlay💽
-swiper_index: 
-sticky:  
 
----
 
 ---
 
 > 转载于esir大佬[视频教程](https://www.youtube.com/watch?v=YwbwzuXKNlg&t=26s)，大佬的[油管主页](https://www.youtube.com/@eSirPlayGround)，请支持一下！
 
-# 一、查看并新建分区
+## 一、查看并新建分区
 
 首先，使用`SSH`命令登录`OpenWrt`， 执行`lsblk`命令查看当前固件分区格式，并得到固件现有`Overlay`空间大小，自己心里有个数，准备扩容多大。
 
@@ -31,7 +20,7 @@ sticky:
 
 按提示输入`yes`确认保存设置，然后移动左右方向键选择`[Quit]`退出`cfdisk`工具。
 
-# 二、挂载分区
+## 二、挂载分区
 
 然后按如下方法格式化并挂载`sda4`分区:
 
@@ -46,7 +35,7 @@ sticky:
 
 ![图5](https://bu.dusays.com/2025/01/05/677a707430396.png)
 
-# 三、OpenWrt添加挂载点
+## 三、OpenWrt添加挂载点
 
 进入`OpenWrt`控制页面，**找到系统->挂载点->添加**，添加`sda4`挂载点为`Overlay`外部挂载点，保存并应用：
 
