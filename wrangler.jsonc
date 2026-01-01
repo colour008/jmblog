@@ -1,9 +1,9 @@
-// wrangler.jsonc
+// wrangler.jsonc（Wrangler 4.x 静态资源部署标准配置）
 {
-    "name": "jamhoo", // 替换为你的项目名
-    "compatibility_date": "2026-01-01",
+    "name": "jamhoo", // 替换为你的项目名（自定义）
+    "compatibility_date": "2026-01-01", // 固定填当前日期
+    "main": "./worker.js", // 指向 Worker 脚本（必须存在）
     "assets": {
         "directory": "./" // index.html 所在目录（根目录填./，子目录填./dist等）
-    },
-    "main": "worker.js" // 必须配置（即使是静态部署，需新建空的worker.js）
+    }
 }
