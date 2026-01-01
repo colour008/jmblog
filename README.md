@@ -4,6 +4,7 @@
  <img alt="Static Badge" src="https://img.shields.io/badge/github-jamhoo-blue?logo=github">
 <img alt="Static Badge" src="https://img.shields.io/badge/Colourflare-page-orange?logo=cloudflare">
 <img alt="Static Badge" src="https://img.shields.io/badge/LICENSE-MIT-green?logo=metrodeparis">
+<img alt="Static Badge" src="https://img.shields.io/badge/Docsify-Frame-brightgreen?logo=docsify&logoColor=%232ECE53">
 
 
 
