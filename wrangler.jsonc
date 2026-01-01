@@ -1,9 +1,9 @@
 // wrangler.jsonc
 {
-    "name": "jamhoo",
-    "compatibility_date": "2026-01-01", // 填当前日期
-    "site": {
-        "bucket": "./", // 静态资源目录（这里是项目根目录，因为index.html在根目录）
-        "entry-point": "."
-    }
+    "name": "your-static-site", // 替换为你的项目名
+    "compatibility_date": "2026-01-01",
+    "assets": {
+        "directory": "./" // index.html 所在目录（根目录填./，子目录填./dist等）
+    },
+    "main": "worker.js" // 必须配置（即使是静态部署，需新建空的worker.js）
 }
