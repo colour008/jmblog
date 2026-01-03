@@ -19,6 +19,8 @@
 -   [17. Cloudflare部署GitHub静态页面部署命令](/Docs/17.Cloudflare部署GitHub静态页面部署命令.md)
 -   [18. 静态徽章制作教程](/Docs/18.静态徽章制作教程.md)
 -   [19. VMware 安装虚拟系统键盘输入延迟解决办法](/Docs/19.VMware%20安装虚拟系统键盘输入延迟解决办法.md)
+-   [20. 在终端显示系统信息的fetch类软件](/Docs/20.在终端显示系统信息的fetch类软件.md)
+-   [21. 修改Ubuntu远程登录欢迎提示信息](/Docs/21.修改Ubuntu远程登录欢迎提示信息.md)
 
 <!-- -   ❉ 备忘清单类
     -   [1. MySQL备忘清单](/Docs_1/MySQL%20备忘清单.md)
